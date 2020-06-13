@@ -1,8 +1,10 @@
-import React from 'react';
+import React ,{useState} from 'react';
 import { StyleSheet, Text, View,TextInput, Button } from 'react-native';
 
 export default function App() {
-  const [value, onChangeText] = React.useState('E.g: Hasika Dilshani');
+  const [name, setName] = useState('');
+  const [age, setAge] = useState('');
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>
@@ -10,20 +12,27 @@ export default function App() {
       </Text>
       <TextInput
         style={ styles.userInput }
-        onChangeText={text => onChangeText(text)}
-        value={value}
+        onChangeText={text => setName(text)}
       />
-      <Button style={{ height: 30}}
-        title="Submit"
+      
+      <Text style={styles.title}>
+        Enter Your Age :
+      </Text>
+      <TextInput
+        style={ styles.userInput }
+        keyboardType = 'numeric'
+        onChangeText={text => setAge(text)}
       />
+      {name != '' && age != '' && <Text style={{fontSize:18, marginTop:50,fontWeight: "bold"}}>Hello {name}.Your age is {age}.</Text>}
     </View>
+    
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#8EB6F4',
     justifyContent: "center",
     alignItems: "center",
   },
@@ -32,12 +41,14 @@ const styles = StyleSheet.create({
     fontWeight: "bold"
   },
   userInput:{
-    borderColor: 'black', 
+    width:200,
+    height:50,
+    borderColor: '#241AA9', 
     borderWidth: 2, 
     padding: 5, 
-    margin: 20, 
-    marginBottom: 70, 
-    backgroundColor: '#CFD6E1'
+    margin: 20,
+    fontSize:20, 
+     
   }
 
 });
