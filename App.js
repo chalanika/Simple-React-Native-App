@@ -2,9 +2,8 @@ import React ,{useState} from 'react';
 import { StyleSheet, Text, View,TextInput } from 'react-native';
 
 export default function App() {
-  const [name, setName] = useState('');
-  const [age, setAge] = useState('');
-
+  const [name, setName] = useState();
+  const [age, setAge] = useState();
   return (
     <View style={styles.container}>
       <Text style={styles.title}>
@@ -12,24 +11,20 @@ export default function App() {
       </Text>
       <TextInput
         style={ styles.userInput }
-        onChangeText={text => setName(text)}
-      />
-      
+        onChangeText={val => setName(val)}
+      />  
       <Text style={styles.title}>
         Enter Your Age :
       </Text>
       <TextInput
         style={ styles.userInput }
         keyboardType = 'numeric'
-        onChangeText={text => setAge(text)}
+        onChangeText={val => setAge(val)}
       />
-      {name != '' && age != '' && <Text style={{fontSize:18, marginTop:50,fontWeight: "bold"}}>Hello {name}.Your age is {age}.</Text>}
-    </View>
-    
+      {name != null && age != null && <Text style={styles.text}>Hello,{name}. Your age is {age}</Text>}
+    </View>   
   );
 }
-
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -42,13 +37,15 @@ const styles = StyleSheet.create({
   },
   userInput:{
     width:200,
-    height:50,
+    height:30,
     borderColor: '#241AA9', 
     borderWidth: 2, 
     padding: 5, 
     margin: 20,
-    fontSize:20, 
-     
+    fontSize:15,     
+  },
+  text:{
+    fontSize:15, marginTop:50,fontWeight: "bold"
   }
 
 });
