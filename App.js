@@ -21,7 +21,7 @@ export default function App() {
         keyboardType = 'numeric'
         onChangeText={val => setAge(val)}
       />
-      {name != null && age != null && <Text style={styles.text}>Hello,{name}. Your age is {age}</Text>}
+      {name != null && age != null && <Text style={styles.text}>Hello,My name is {name}. Your age is {age}</Text>}
     </View>   
   );
 }
